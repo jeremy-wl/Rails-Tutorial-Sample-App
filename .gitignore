@@ -17,7 +17,6 @@
 
 tmp/**/*
 tmp/*
-Gemfile.lock
 doc/app
 *.swp
 *~
