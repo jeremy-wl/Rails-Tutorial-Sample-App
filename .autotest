@@ -1,0 +1,11 @@
+require 'minitest/autorun'
+
+require "autotest/growl"
+
+#require 'autotest/redgreen'
+#require 'redgreen/autotest'
+
+#require "autotest/test_notifier"
+#require "test_notifier/autotest"
+
+require 'autotest/timestamp'
