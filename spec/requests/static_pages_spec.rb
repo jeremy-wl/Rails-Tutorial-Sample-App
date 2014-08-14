@@ -9,6 +9,11 @@ describe "Static pages" do
       expect(page).to have_content('Sample App')
     end
 
+    it "should have the base title" do
+      visit '/static_pages/home'
+      expect(page).to have_title("Ruby on Rails Sample App")
+    end
+
   end
 
   describe "Contact page" do

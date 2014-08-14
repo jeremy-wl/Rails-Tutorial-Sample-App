@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ruby on Rails Tutorial Sample App | <%=@title%></title>
+	<title><%= title %></title>  <!-- "title" helper is defined in application_helper -->
+	<%= csrf_meta_tags %>	<!-- embeded method used for security reasons -->
 </head>
 
 <body>
@@ -10,3 +11,4 @@
 
 </body>
 </html>
+
