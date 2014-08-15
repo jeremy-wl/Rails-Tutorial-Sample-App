@@ -3,7 +3,6 @@ require 'spec_helper'
 describe StaticPagesController do 
   render_views
 
-
   describe "Get 'home'" do
 
     it "should be success" do

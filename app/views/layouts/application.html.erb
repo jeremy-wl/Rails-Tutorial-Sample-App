@@ -3,6 +3,8 @@
 <head>
 	<title><%= title %></title>  <!-- "title" helper is defined in application_helper -->
 	<%= csrf_meta_tags %>	<!-- embeded method used for security reasons -->
+	<%= stylesheet_link_tag 'screen', :media => 'screen' %>
+	<%= stylesheet_link_tag 'screen', :media => 'print' %>
 </head>
 
 <body>
@@ -11,4 +13,3 @@
 
 </body>
 </html>
-
