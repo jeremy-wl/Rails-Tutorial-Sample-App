@@ -14,5 +14,5 @@ class StaticPagesController < ApplicationController
   def help
   	@title = "Help"
   end
-
+  
 end

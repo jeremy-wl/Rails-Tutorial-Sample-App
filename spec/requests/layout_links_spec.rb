@@ -1,5 +1,14 @@
 # This helper tests if all the layout links direct pages to the right ones (except the root page)
 
+# Request specs provide a thin wrapper around Rails' integration tests, and are
+# designed to drive behavior through the full stack, including routing
+# (provided by Rails) and without stubbing (that's up to you).
+# With request specs, you can:
+# specify a single request
+# specify multiple requests across multiple controllers
+# specify multiple requests across multiple sessions
+
+
 require 'spec_helper'
 
 describe "LayoutLinks" do
@@ -25,4 +34,34 @@ describe "LayoutLinks" do
 		expect(page).to have_title("About")
 	end
 
+	it "should have a Sign Up title" do
+		visit "/signup"
+		expect(page).to have_title("Sign Up")		
+	end
+
+	it "should have the right links on the layout" do
+		visit root_path
+			expect(page).to have_title("Home")		
+			click_link("About")
+			expect(page).to have_title("About")
+			click_link("Contact")
+			expect(page).to have_title("Contact")
+			visit root_path		    
+			click_link("Sign Up")				
+			expect(page).to have_title("Sign Up")
+			
+			within("header") do
+				click_link("Help")
+				expect(page).to have_title("Help")
+			end
+
+			within ("footer") do 
+				click_link("Help")
+				expect(page).to have_title("Help")
+			end
+
+			expect(page).to have_selector("a[href='/'] > img")	#meaning there's an anchor along with an href attribute where there is an img tag inside
+	end
+
+#The test won't pass with this line cuz it's not on the layout page??
 end
