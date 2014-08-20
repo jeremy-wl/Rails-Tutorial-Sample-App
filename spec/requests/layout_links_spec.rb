@@ -39,8 +39,16 @@ describe "LayoutLinks" do
 		expect(page).to have_title("Sign Up")		
 	end
 
-	it "should have the right links on the layout" do
+	
+
+	before(:each) do
 		visit root_path
+	end
+
+#The before block is supposed to run before all tests that follow, so it has to go outside of the it blocks. If the code is specific to one scenario, just remove the before since it's not really doing anything.
+
+	it "should have the right links on the layout" do
+
 			expect(page).to have_title("Home")		
 			click_link("About")
 			expect(page).to have_title("About")
