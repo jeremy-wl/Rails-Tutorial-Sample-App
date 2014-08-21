@@ -62,7 +62,8 @@ group :test do
 end
 
 gem 'rspec-core','~>2.13.0'
-
+gem 'annotate'
+gem 'bcrypt-ruby'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
