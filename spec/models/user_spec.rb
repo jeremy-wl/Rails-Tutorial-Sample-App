@@ -4,9 +4,13 @@ describe User do
 	# it "should create a new instance given a valid attribute" do
 	# 	User.create!(:name => "JW", :email =>"de@we.org")
 	# end
-	attr = { :name => "JW", :email => "JW@lin.com" }
+	attr = { :name 		=> "JW", 
+			 :email 	=> "JW@lin.com",
+			 :password  => "foobar",	
+			 :password_confirmation => "foobar"  # should be same as the one above
+	}
 	before	{ @user = User.new(attr) }
-
+ 
 	# This new example is just a sanity check, verifying that the subject (@user) is initially valid
 
 	subject { @user }
@@ -58,4 +62,44 @@ describe User do
 			user_with_duplicate_email = User.new(:name => attr[:name], :email => upcased_email)	# could be simplified, check back what's on the book and the sreencast
 			user_with_duplicate_email.should_not be_valid
 		end
+
+	describe "passwords" do
+		it "should have a password attribute" do
+			@user.should respond_to(:password)
+		end
+
+		it "should have a password_confirmation attribute" do
+			@user.should respond_to(:password_confirmation)
+		end
+	end
+
+	describe "password validations" do
+		it "should require a password" do
+			User.new(attr.merge(:password => "", :password_confirmation => "")). # should be filled
+				should_not be_valid	# note that there's a dot at the end of the line above
+		end
+
+		it "should require a matching password confirmation" do
+			User.new(attr.merge(:password_confirmation => "invalid")). # doesn't match the initialized "foobar"
+			should_not be_valid
+		end
+
+		it "should reject short passwords" do
+			short = "a"*5
+			User.new(attr.merge(:password => short, :password_confirmation => short )).
+			should_not be_valid
+		end
+
+		it "should reject long passwords" do
+			long = "a"*41
+			User.new(attr.merge(:password => long,  :password_confirmation => long )).
+			should_not be_valid
+		end
+
+	describe "password encryption"
+		it "should have an encryped password attribute" do
+			# before	{ @user = User.create!(attr) }
+			@user.should respond_to(:encrypted_password)
+		end
+	end
 end
