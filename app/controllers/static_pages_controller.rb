@@ -1,18 +1,18 @@
 class StaticPagesController < ApplicationController
   def home
-  	@title = "Home Page"
+  	@page_title = "Home Page"
   end
 
   def about
-  	 @title = "About Us"
+  	 @page_title = "About Us"
   end
 
   def contact
-  	@title = "Contact Us"
+  	@page_title = "Contact Us"
   end
 
   def help
-  	@title = "Help"
+  	@page_title = "Help"
   end
   
 end

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><%= title %></title>  <!-- "title" helper is defined in application_helper -->
+	<title><%= full_title(@page_title) %></title>  <!-- "full_title" helper is defined in application_helper -->
 	<%= csrf_meta_tags %>	<!-- embeded method used for security reasons -->
 	<%= render 'layouts/stylesheets' %>
 </head>

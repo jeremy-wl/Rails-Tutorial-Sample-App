@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
 # static_pages IS THE StaticPagesController WHILE '#whatever' IS THE ACTION!! 
 
-  resources:users
+  resources :users
 
   root               to: "static_pages#home"
 
