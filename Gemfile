@@ -5,6 +5,8 @@ ruby '2.1.2'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.11.0'
 gem 'gravatar_image_tag'
+gem 'rdoc-data'
+#gem 'bcrypt'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -65,7 +67,7 @@ end
 
 gem 'rspec-core','~>2.13.0'
 gem 'annotate'
-gem 'bcrypt-ruby'
+gem 'bcrypt'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
