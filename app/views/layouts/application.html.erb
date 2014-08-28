@@ -4,13 +4,14 @@
 	<title><%= full_title(@page_title) %></title>  <!-- "full_title" helper is defined in application_helper -->
 	<%= csrf_meta_tags %>	<!-- embeded method used for security reasons -->
 	<%= render 'layouts/stylesheets' %>
+	<%= javascript_include_tag :defaults %>
 </head>
 
 <body>
 	<div class="container">
 		<%= render 'layouts/header' %>
 		<% flash.each do |key,value| %>
-			<div class="alert alert-<%= key %>"><%= value %></div>
+			<%= content_tag(:div, value, :class => "alert alert-#{key}") %>
 		<% end %>
 		<section class="round">
 			<%= yield %>

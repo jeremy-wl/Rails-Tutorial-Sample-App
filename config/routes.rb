@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 # static_pages IS THE StaticPagesController WHILE '#whatever' IS THE ACTION!! 
 
   resources :users
+  resources :sessions, only:[:new, :create, :destroy]
 
   root               to: "static_pages#home"
 
@@ -15,7 +16,10 @@ Rails.application.routes.draw do
   match '/help',     to: "static_pages#help",     via:'get'
   match '/about',    to: "static_pages#about",    via:'get'
   match '/signup',   to: "users#new",             via:'get'
+  match '/signin',   to: "sessions#new",          via:'get'
+  match '/signout',  to: "sessions#destroy",      via:'delete'
 
+  # jquery_ujs.js is MISSING!!!!!!!!!!!!!!!!!!!!!!
 
 
 

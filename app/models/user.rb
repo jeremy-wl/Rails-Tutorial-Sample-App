@@ -8,12 +8,14 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  password_digest :string(255)
+#  remember_token  :string(255)
 #
 
 class User < ActiveRecord::Base
 	# attr_accessible :name, :email #define the attrs that can be accessed from the outside
 		# the code commented above is no longer available in Rails 4, check out http://t.cn/RP8jkg1 for reference
 	before_save { self.email = email.downcase } # before_save forces Rails to downcase the email attribute before saving the user to the database
+    before_create :create_remember_token
 
 	# attr_accessor :password # this only creates an attribute in memory, not in db (should never be in db), the one in the db should be an encrypted psw
 	# attr_accessor :password_confirmation
@@ -28,6 +30,20 @@ class User < ActiveRecord::Base
 	validates :password,    :confirmation => true, # by making ":confirmation" in XX attribute true ,rails automatically creates an attribute XX_confirmation
 							:length => { :within => 6..40 } # use :within to give it a range instead of using maximum and minimum attibutes
     has_secure_password
+
+    def User.new_remember_token
+      SecureRandom.urlsafe_base64
+    end
+
+    def User.digest(token)
+      Digest::SHA1.hexdigest(token.to_s)
+    end
+
+    private
+
+      def create_remember_token
+        self.remember_token = User.digest(User.new_remember_token)
+      end
 
 	# before_save	:encrypt_password
 
