@@ -19,10 +19,6 @@ Rails.application.routes.draw do
   match '/signin',   to: "sessions#new",          via:'get'
   match '/signout',  to: "sessions#destroy",      via:'delete'
 
-  # jquery_ujs.js is MISSING!!!!!!!!!!!!!!!!!!!!!!
-
-
-
   # the ones right below is NOT the rails way to do it
               # get 'static_pages/home'
               # get 'static_pages/contact'
