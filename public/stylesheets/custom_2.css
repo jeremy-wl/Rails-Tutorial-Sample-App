@@ -35,13 +35,14 @@
  }
 
  a:visited{
-   color: #fff;
+   color: #039487;
+   text-decoration:underline;
  }
 
 
  nav{
    float: right;
-   background: white;
+   background: #000;
    padding: 0 0.7em;
  }
 
