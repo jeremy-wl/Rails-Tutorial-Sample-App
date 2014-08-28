@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'cucumber-rails'
 gem 'bootstrap-sass'
 gem 'sprockets', '2.11.0'
 gem 'gravatar_image_tag'
@@ -23,6 +22,8 @@ end
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 
 # Use SCSS for stylesheets
