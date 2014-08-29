@@ -16,7 +16,7 @@ gem 'rails', '4.1.4'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
-  gem 'rspec-rails', '2.13.1'
+  gem 'rspec-rails', '2.14.0.rc1'
   gem 'capybara', '2.1.0'
 end
 
@@ -57,7 +57,7 @@ gem 'autotest-rails', '~> 4.2.1'
 
 
 group :test do
-  gem 'rspec','~> 2.13.0'
+  gem 'rspec','~> 2.14.0.rc1'
   gem 'ZenTest'
   gem "minitest"
   gem 'autotest-growl'
@@ -68,7 +68,7 @@ group :test do
 #  gem 'rspec-mocks'
 end
 
-gem 'rspec-core','~>2.13.0'
+gem 'rspec-core','~>2.14.0.rc1'
 gem 'annotate'
 gem 'bcrypt'
 

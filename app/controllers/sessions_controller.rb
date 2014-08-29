@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 		user = User.find_by_email(params[:session][:email].downcase) # the email should still be valid when the user capitalizes it
 		if user && user.authenticate(params[:session][:password])
 			sign_in user
-			redirect_to user_path(user)
+			redirect_back_or(user) # redirect to session[:return_to] or user
 		else																																																																																																																		
 			flash.now[:error] = "Invalid email/password combination"
 			render "new"

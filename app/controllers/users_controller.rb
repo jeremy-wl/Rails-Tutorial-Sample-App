@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  before_action :signed_in_user, only:[:edit, :update]
+  before_action :correct_user, only:[:edit, :update]
+
   def new
     @page_title = "Sign Up"
     @user = User.new
@@ -23,12 +27,10 @@ class UsersController < ApplicationController
 
   def edit
   	@page_title = "Edit user"
-  	@user = User.find(params[:id])
   end
 
   def update
     @page_title = "Update user"
-  	@user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated!"
       redirect_to @user
@@ -41,5 +43,17 @@ class UsersController < ApplicationController
 		def user_params
 			params.require(:user).permit(:name, :password, :password_confirmation, :email)
 		end	
-  
+
+    def signed_in_user
+      unless signed_in?
+        store_location  # store the location that the user doesnt have the access to
+        redirect_to signin_path, notice: "Please sign in first!"        
+      end
+    end
+
+    def correct_user
+        @user = User.find(params[:id])
+        redirect_to root_path unless current_user?(@user)
+    end
+    
 end

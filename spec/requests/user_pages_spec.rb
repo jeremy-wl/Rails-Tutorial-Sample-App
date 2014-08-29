@@ -72,7 +72,7 @@ describe "UserPages" do
 			end
 
 			it { should have_title(new_name) }
-		    # it { should have_selector('div.alert.alert-success') }
+		    it { should have_selector('div.alert.alert-success') }
 		    it { should have_link('Sign out', href: signout_path) }
 
 		    specify { expect(user.reload.name).to eq new_name }
