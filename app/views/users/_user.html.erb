@@ -1,7 +1,10 @@
 <ul>
-	<p>
+	<p style="font-size:42px;">
  		<%= gravatar_for user %>
- 		<%= link_to user.name, user %><br /><br /><br /><hr />
+ 		<%= link_to user.name, user %>
+ 		<% if current_user.admin? && !current_user?(user) %>
+ 			| <%= link_to "delete", user, method: :delete, data: { confirm: "ARE YOU SURE?" } %>
+ 		<% end %>
 	</p>
 </ul>
 
